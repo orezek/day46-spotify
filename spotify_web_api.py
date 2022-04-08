@@ -9,11 +9,13 @@ class SpotifyWebAccess:
         Spotify account information - should be secret for each account
         You may use environmental variables instead instance variables
         """
-
-        self.client_id = None  # add your own spotify id
-        self.client_secret = None  # add your own spotify secret key
-        self.scope = None  # add your own scope
-        self.redirect_uri = "http://example.com"    # you can add yor won redirect url but this one is sufficient too
+        with open("spotify_credentials.txt") as file:
+            credentials = file.read()
+        credentials = json.loads(credentials)
+        self.client_id = credentials["client_id"]  # add your own spotify id
+        self.client_secret = credentials["client_secret"]  # add your own spotify secret key
+        self.scope = credentials["scope"]  # add your own scope
+        self.redirect_uri = credentials["redirect_uri"] # you can add yor won redirect url but this one is sufficient
 
         self.sp_oauth_obj = spotipy.oauth2.SpotifyOAuth(
                                 client_id=self.client_id,

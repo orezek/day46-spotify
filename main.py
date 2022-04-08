@@ -6,10 +6,10 @@ if __name__ == "__main__":
     song_list_ids = []  # track ID holder
     not_found_songs = list()    # Just to see what songs were not found
 
-    date_scraped = "1978-08-26"
+    date_scraped = "2022-04-08"
     playlist_name = f"Billboard 100 - {date_scraped}"
-    playlist_description = f"The playist was created by a python script on {str(date.today())}"
-    year_searched = "1978"  # to specify the search for Spotify - now disabled
+    playlist_description = f"The playlist was created by a python script on {str(date.today())}"
+    year_searched = "2022"  # to specify the search for Spotify - now disabled
     sp = SpotifyWebAccess()
     sc = SongChartScrapper(date_scraped)
     playlist_id = sp.create_playlist(playlist_name, playlist_description)
